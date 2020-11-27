@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Header from './components/Header'
+import Counters from './components/Counters'
+import Counter from './components/Counter'
 
-function App() {
+const App = () => {
+  const initialCounters = [
+    { id: 1, value: 0 },
+    { id: 2, value: 0 },
+    { id: 3, value: 0 },
+    { id: 4, value: 0 },
+  ]
+  const [counters, setCounters] = useState(initialCounters)
+
+  const onIncrement = () => {
+    setCounters()
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header totalCounters={counters.length} />
+      <main className='container'>
+        <Counters counters={counters} />
+      </main>
+    </>
+  )
 }
 
-export default App;
+export default App
